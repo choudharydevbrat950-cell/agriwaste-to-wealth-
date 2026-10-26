@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgriWaste to Wealth</title>
+<style>
+:root{--green:#1f6b43;--green2:#2e8b57;--light:#eef7ef;--ink:#193326;--muted:#63766a;--white:#fff;--border:#dce8de;--gold:#f1b84b}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6faf6;color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}
+header{background:linear-gradient(120deg,#155936,#32965b);color:white;padding:20px 16px 24px}
+.top{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:800}.logo{background:#fff;color:var(--green);width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:23px}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px;max-width:1100px;margin-left:auto;margin-right:auto}
+nav button{border:1px solid #ffffff55;background:#ffffff12;color:#fff;border-radius:22px;padding:9px 13px}nav button.active,nav button:hover{background:white;color:var(--green)}
+main{max-width:1100px;margin:22px auto;padding:0 14px 40px}
+.hero{background:#e5f4e8;border:1px solid #cde6d1;border-radius:22px;padding:24px;display:grid;grid-template-columns:1.5fr 1fr;gap:20px;align-items:center}
+.eyebrow{color:var(--green2);font-weight:800;text-transform:uppercase;letter-spacing:1px;font-size:12px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.08;margin:10px 0}h2{margin:0 0 14px;font-size:23px}h3{margin:8px 0}
+p{line-height:1.55;color:var(--muted)}.hero p{max-width:600px}
+.hero-art{min-height:170px;display:grid;place-items:center;font-size:92px;background:linear-gradient(145deg,#d0ebce,#f8ffe9);border-radius:18px}
+.btn{background:var(--green);color:white;border:0;border-radius:11px;padding:11px 16px;font-weight:700}.btn:hover{background:#12492c}.btn.secondary{background:#e4f1e6;color:var(--green)}.btn.gold{background:var(--gold);color:#362909}.btn.small{padding:8px 11px;font-size:13px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.stat,.panel,.product{background:white;border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:0 3px 12px #163d1908}
+.stat .num{font-size:27px;font-weight:800;color:var(--green);margin:6px 0}.stat .label{font-size:13px;color:var(--muted)}
+.section{display:none}.section.active{display:block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-weight:700;font-size:13px;margin-bottom:6px}
+input,select,textarea{width:100%;border:1px solid #cbdccf;border-radius:10px;padding:11px;background:white;color:var(--ink);outline-color:var(--green2)}
+.field{margin-bottom:12px}.full{grid-column:1/-1}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.product .pic{height:120px;border-radius:12px;background:var(--light);display:grid;place-items:center;font-size:54px}.price{font-size:20px;font-weight:800;color:var(--green)}.tag{display:inline-block;background:#e4f3e6;color:#21643e;border-radius:20px;padding:5px 9px;font-size:11px;font-weight:700}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--border)}th{color:var(--muted);font-size:12px}
+.notice{background:#fff7df;border:1px solid #f1dfa7;border-radius:12px;padding:12px;color:#70561a;font-size:13px}
+.empty{padding:24px;text-align:center;color:var(--muted)}footer{text-align:center;color:var(--muted);padding:24px 12px;font-size:12px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#183e29;color:white;padding:12px 16px;border-radius:12px;display:none;max-width:90%;z-index:10}
+@media(max-width:700px){.hero{grid-template-columns:1fr}.hero-art{min-height:110px;font-size:65px}.stats{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.products{grid-template-columns:1fr 1fr}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}}
+@media(max-width:420px){.products{grid-template-columns:1fr}.brand{font-size:17px}nav button{padding:8px 10px;font-size:12px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="brand"><div class="logo">🌾</div><span>AgriWaste <span style="color:#c8f0c9">to Wealth</span></span></div>
+    <div style="font-size:13px">♻️ Turning crop waste into opportunity</div>
+  </div>
+  <nav aria-label="Main navigation">
+    <button class="active" data-page="home">Home</button>
+    <button data-page="farmer">Farmer Registration</button>
+    <button data-page="waste">Waste Collection</button>
+    <button data-page="market">Marketplace</button>
+    <button data-page="impact">Impact Dashboard</button>
+  </nav>
+</header>
+<main>
+  <section id="home" class="section active">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Sustainable agriculture • Rural opportunity</div>
+        <h1>Waste less.<br>Grow a greener future.</h1>
+        <p>Connect farmers, crop-residue collection, and eco-friendly product makers. Turn rice straw and wheat straw into a valuable resource instead of burning it.</p>
+        <div class="actions">
+          <button class="btn" onclick="showPage('farmer')">Register as Farmer</button>
+          <button class="btn secondary" onclick="showPage('market')">Explore Products</button>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Plant growing from soil">🌱♻️🌾</div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div>🌾</div><div class="num" id="homeWaste">0 kg</div><div class="label">Waste recorded</div></div>
+      <div class="stat"><div>👩‍🌾</div><div class="num" id="homeFarmers">0</div><div class="label">Farmers registered</div></div>
+      <div class="stat"><div>📦</div><div class="num" id="homeOrders">0</div><div class="label">Demo orders</div></div>
+      <div class="stat"><div>🌍</div><div class="num">3</div><div class="label">SDGs supported: 12, 13, 15</div></div>
+    </div>
+    <div class="grid2">
+      <div class="panel"><h2>How it works</h2><p><b>1.</b> Farmers register and list available crop residue.</p><p><b>2.</b> Collection teams record the crop type and quantity.</p><p><b>3.</b> Residue can be supplied to suitable processing units.</p><p><b>4.</b> Buyers explore eco-friendly products in the marketplace.</p></div>
+      <div class="panel"><h2>Our mission</h2><p>Reduce open-field residue burning, support responsible production, and create additional rural livelihood opportunities.</p><div class="notice">Prototype note: dashboard values are calculated from records entered in this browser. Environmental benefits are not automatically estimated.</div></div>
+    </div>
+  </section>
+
+  <section id="farmer" class="section">
+    <div class="panel">
+      <div class="eyebrow">Join the network</div><h2>Farmer Registration</h2>
+      <p>Enter sample or demonstration details. Use consent and appropriate privacy practices before collecting real personal information.</p>
+      <form id="farmerForm">
+        <div class="formgrid">
+          <div class="field"><label for="farmerName">Farmer name *</label><input id="farmerName" required maxlength="80" placeholder="Enter full name"></div>
+          <div class="field"><label for="farmerPhone">Mobile number *</label><input id="farmerPhone" required inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number"></div>
+          <div class="field"><label for="farmerVillage">Village / Town *</label><input id="farmerVillage" required maxlength="100" placeholder="Village or town"></div>
+          <div class="field"><label for="farmerState">State</label><select id="farmerState"><option>Bihar</option><option>Uttar Pradesh</option><option>Punjab</option><option>Haryana</option><option>Madhya Pradesh</option><option>Other</option></select></div>
+          <div class="field full"><label for="farmerCrop">Main crop residue</label><select id="farmerCrop"><option>Rice straw</option><option>Wheat straw</option><option>Other crop residue</option></select></div>
+        </div>
+        <button class="btn" type="submit">Save Farmer (Demo)</button>
+      </form>
+    </div>
+    <div class="panel" style="margin-top:16px"><h2>Registered Farmers</h2><div id="farmerTable"></div></div>
+  </section>
+
+  <section id="waste" class="section">
+    <div class="panel">
+      <div class="eyebrow">Resource tracking</div><h2>Record Crop Waste</h2>
+      <form id="wasteForm">
+        <div class="formgrid">
+          <div class="field"><label for="wasteFarmer">Farmer name *</label><input id="wasteFarmer" required maxlength="80" placeholder="Name of farmer"></div>
+          <div class="field"><label for="wasteType">Waste type *</label><select id="wasteType"><option>Rice straw</option><option>Wheat straw</option><option>Other crop residue</option></select></div>
+          <div class="field"><label for="wasteQty">Quantity (kg) *</label><input id="wasteQty" type="number" required min="1" max="10000000" step="1" placeholder="e.g. 500"></div>
+          <div class="field"><label for="wasteLocation">Collection location</label><input id="wasteLocation" maxlength="100" placeholder="Village / collection centre"></div>
+        </div>
+        <button class="btn" type="submit">Add Waste Record</button>
+      </form>
+    </div>
+    <div class="panel" style="margin-top:16px"><h2>Waste Collection Records</h2><div id="wasteTable"></div></div>
+  </section>
+
+  <section id="market" class="section">
+    <div class="eyebrow">Eco-friendly choices</div><h2>Product Marketplace</h2>
+    <p>Sample listings for a prototype. Prices and availability are illustrative, not live offers.</p>
+    <div class="products" id="products"></div>
+    <div class="panel" style="margin-top:16px"><h2>Demo Orders</h2><div id="ordersTable"></div><p class="notice">The “Place demo order” button only saves a local demo order. It does not charge money, contact a seller, or arrange delivery.</p></div>
+  </section>
+
+  <section id="impact" class="section">
+    <div class="eyebrow">Measure progress</div><h2>Impact Dashboard</h2>
+    <p>These figures update using records entered in this browser. They are project activity indicators, not verified environmental impact estimates.</p>
+    <div class="stats">
+      <div class="stat"><div class="label">Total crop residue recorded</div><div class="num" id="impactWaste">0 kg</div></div>
+      <div class="stat"><div class="label">Farmers connected</div><div class="num" id="impactFarmers">0</div></div>
+      <div class="stat"><div class="label">Demo products listed</div><div class="num" id="impactProducts">0</div></div>
+      <div class="stat"><div class="label">Demo orders</div><div class="num" id="impactOrders">0</div></div>
+    </div>
+    <div class="panel"><h2>Waste by type</h2><div id="wasteBreakdown"></div></div>
+    <div class="actions"><button class="btn secondary" onclick="exportData()">Export data as JSON</button><button class="btn" onclick="resetData()">Reset demo data</button></div>
+  </section>
+</main>
+<footer>AgriWaste to Wealth • Student Working Prototype • Build a circular, sustainable rural economy</footer>
+<div id="toast" class="toast" role="status"></div>
+<script>
+const KEY = "agriwaste_to_wealth_demo_v1";
+const defaultData = {farmers:[],waste:[],orders:[]};
+function loadData(){
+  try { const saved=JSON.parse(localStorage.getItem(KEY)); return saved && Array.isArray(saved.farmers) && Array.isArray(saved.waste) && Array.isArray(saved.orders) ? saved : structuredClone(defaultData); }
+  catch(e){ return {farmers:[],waste:[],orders:[]}; }
+}
+let data=loadData();
+const products=[
+ {id:"bag",name:"Biodegradable Carry Bag",price:25,unit:"per pack",icon:"🛍️",desc:"Plant-fibre based bag concept for everyday packaging."},
+ {id:"pack",name:"Protective Packaging",price:60,unit:"per piece",icon:"📦",desc:"A compostable packaging concept for shipping and storage."},
+ {id:"tray",name:"Moulded Fibre Tray",price:18,unit:"per piece",icon:"🥡",desc:"A sample tray concept made with agricultural fibres."}
+];
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data));}catch(e){toast("Could not save data in this browser.");}renderAll();}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.style.display="block";clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.style.display="none",2600);}
+function showPage(id){
+ document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id===id));
+ document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+ window.scrollTo({top:0,behavior:"smooth"});renderAll();
+}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+document.getElementById("farmerForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const phone=document.getElementById("farmerPhone").value.trim();
+ if(!/^[0-9]{10}$/.test(phone)){toast("Enter a valid 10-digit mobile number.");return;}
+ data.farmers.push({id:Date.now(),name:document.getElementById("farmerName").value.trim(),phone,village:document.getElementById("farmerVillage").value.trim(),state:document.getElementById("farmerState").value,crop:document.getElementById("farmerCrop").value,date:new Date().toLocaleDateString()});
+ e.target.reset();save();toast("Farmer saved in this browser (demo).");
+});
+document.getElementById("wasteForm").addEventListener("submit",e=>{
+ e.preventDefault();const qty=Number(document.getElementById("wasteQty").value);
+ if(!Number.isFinite(qty)||qty<=0){toast("Enter a quantity greater than zero.");return;}
+ data.waste.push({id:Date.now(),farmer:document.getElementById("wasteFarmer").value.trim(),type:document.getElementById("wasteType").value,qty,location:document.getElementById("wasteLocation").value.trim(),date:new Date().toLocaleDateString()});
+ e.target.reset();save();toast("Waste record added.");
+});
+function renderFarmers(){
+ const el=document.getElementById("farmerTable");
+ if(!data.farmers.length){el.innerHTML='<div class="empty">No farmers registered yet.</div>';return;}
+ el.innerHTML='<div style="overflow-x:auto"><table><thead><tr><th>Name</th><th>Village</th><th>State</th><th>Crop residue</th><th>Date</th></tr></thead><tbody>'+data.farmers.map(f=>`<tr><td>${esc(f.name)}</td><td>${esc(f.village)}</td><td>${esc(f.state)}</td><td>${esc(f.crop)}</td><td>${esc(f.date)}</td></tr>`).join("")+'</tbody></table></div>';
+}
+function renderWaste(){
+ const el=document.getElementById("wasteTable");
+ if(!data.waste.length){el.innerHTML='<div class="empty">No waste records yet.</div>';return;}
+ el.innerHTML='<div style="overflow-x:auto"><table><thead><tr><th>Farmer</th><th>Type</th><th>Quantity</th><th>Location</th><th>Date</th></tr></thead><tbody>'+data.waste.map(w=>`<tr><td>${esc(w.farmer)}</td><td>${esc(w.type)}</td><td>${w.qty.toLocaleString()} kg</td><td>${esc(w.location||"—")}</td><td>${esc(w.date)}</td></tr>`).join("")+'</tbody></table></div>';
+}
+function renderProducts(){
+ document.getElementById("products").innerHTML=products.map(p=>`<article class="product"><div class="pic">${p.icon}</div><p><span class="tag">SAMPLE LISTING</span></p><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p><div class="price">₹${p.price} <span style="font-size:12px;font-weight:400;color:#63766a">${esc(p.unit)}</span></div><div class="actions"><button class="btn small" onclick="placeOrder('${p.id}')">Place demo order</button></div></article>`).join("");
+}
+function placeOrder(id){
+ const p=products.find(x=>x.id===id);if(!p)return;
+ data.orders.push({id:Date.now(),product:p.name,price:p.price,date:new Date().toLocaleDateString(),status:"Demo only"});
+ save();toast("Demo order saved. No payment was taken.");
+}
+function renderOrders(){
+ const el=document.getElementById("ordersTable");
+ if(!data.orders.length){el.innerHTML='<div class="empty">No demo orders yet.</div>';return;}
+ el.innerHTML='<div style="overflow-x:auto"><table><thead><tr><th>Product</th><th>Sample price</th><th>Date</th><th>Status</th></tr></thead><tbody>'+data.orders.map(o=>`<tr><td>${esc(o.product)}</td><td>₹${o.price}</td><td>${esc(o.date)}</td><td>${esc(o.status)}</td></tr>`).join("")+'</tbody></table></div>';
+}
+function renderDashboard(){
+ const total=data.waste.reduce((s,w)=>s+w.qty,0);
+ document.getElementById("homeWaste").textContent=total.toLocaleString()+" kg";
+ document.getElementById("homeFarmers").textContent=data.farmers.length;
+ document.getElementById("homeOrders").textContent=data.orders.length;
+ document.getElementById("impactWaste").textContent=total.toLocaleString()+" kg";
+ document.getElementById("impactFarmers").textContent=data.farmers.length;
+ document.getElementById("impactProducts").textContent=products.length;
+ document.getElementById("impactOrders").textContent=data.orders.length;
+ const types=["Rice straw","Wheat straw","Other crop residue"];
+ const counts=types.map(type=>({type,qty:data.waste.filter(w=>w.type===type).reduce((s,w)=>s+w.qty,0)}));
+ document.getElementById("wasteBreakdown").innerHTML=counts.map(c=>`<div style="margin:14px 0"><div style="display:flex;justify-content:space-between;gap:10px"><b>${esc(c.type)}</b><span>${c.qty.toLocaleString()} kg</span></div><div style="height:9px;background:#e6efe7;border-radius:9px;overflow:hidden;margin-top:6px"><div style="height:100%;width:${total?Math.min(100,c.qty/total*100):0}%;background:#2e8b57;border-radius:9px"></div></div></div>`).join("");
+}
+function renderAll(){renderFarmers();renderWaste();renderProducts();renderOrders();renderDashboard();}
+function exportData(){
+ const blob=new Blob([JSON.stringify({data,products,exportedAt:new Date().toISOString()},null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="agriwaste-demo-data.json";a.click();URL.revokeObjectURL(url);toast("Data export started.");
+}
+function resetData(){
+ if(!confirm("Reset all farmer, waste, and demo order records saved in this browser?"))return;
+ data={farmers:[],waste:[],orders:[]};save();toast("Demo data reset.");
+}
+renderAll();
+</script>
+</body>
+</html>
